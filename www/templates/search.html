@@ -4,11 +4,16 @@
 	            <i class="icon ion-search placeholder-icon"></i>
 			    <!--we add ng-model directive to search input to allow for two way data binding that makes the data and view connected -->
 	            <input type="search" placeholder="Search" ng-model="nehmat.userInput">
+	            <!-- clear button within the search input -->
+	           <a ng-click="clearInput()">
+			       <i class="icon ion-ios-close placeholder-icon"></i>
+			    </a>
 	        </label>
 	        <button class="button button-positive" ng-click="getData()">
 		      <i class="icon ion-search"></i>
 		    </button>
 	    </div>
+
 	    <ion-content padding="true">
 	    <ion-slide-box on-slide-changed="slideHasChanged($index)">
 		  <ion-slide ng-repeat="item in searches">
