@@ -1,6 +1,6 @@
 angular.module('ShopChristmas')
-.controller('SearchCtrl', ['$scope','$state', 'SearchData', '$timeout',
-    function($scope, $state, SearchData, $timeout){
+.controller('SearchCtrl', ['$scope','$state', 'SearchData', '$timeout', '$ionicSlideBoxDelegate',
+    function($scope, $state, SearchData, $timeout, $ionicSlideBoxDelegate){
     $scope.nehmat = {
         userInput : ""
     }
@@ -12,7 +12,8 @@ angular.module('ShopChristmas')
         console.log("badri");
         console.log(SearchData.getResults().data.products);
         $scope.searches = SearchData.getResults().data.products;
-      }, 1000);
+        $ionicSlideBoxDelegate.update();
+      }, 500);
 
     }
     
