@@ -1,6 +1,24 @@
  <ion-view view-title="Search">
         <ion-content padding="true">
-          <p>This page should have a search input and info in a list maybe displayed from the Best Buy Api</p>
+        <div class='bar bar-subheader item-input-inset bar-light'>
+	        <label class="item-input-wrapper">
+	            <i class="icon ion-search placeholder-icon"></i>
+	    <!--we add ng-model directive to search input to allow for two way data binding that makes the data and view connected -->
+	            <input type="search" placeholder="Search" ng-model="nehmat.userInput">
+	        </label>
+	        <button class="button button-positive" ng-click="getData()">
+		      <i class="icon ion-search"></i>
+		    </button>
+
+	    </div>
+	    <ion-slide-box on-slide-changed="slideHasChanged($index)">
+		  <ion-slide ng-repeat="item in searches">
+		    <div class="box blue">
+		    <h1>{{ item.name }}</h1>
+
+		    </div>
+		  </ion-slide>
+		</ion-slide-box>
           
         </ion-content>
       </ion-view>

@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
+angular.module('ShopChristmas', ['ionic','ngCordova'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -35,10 +35,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       templateUrl: 'templates/sign-in.html',
       controller: 'SignInCtrl'
     })
-    .state('forgotpassword', {
-      url: '/forgot-password',
-      templateUrl: 'templates/forgot-password.html'
-    })
     .state('tabs', {
       url: '/tab',
       abstract: true,
@@ -48,7 +44,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       url: '/search',
       views: {
         'search-tab': {
-          templateUrl: 'templates/search.html'
+          templateUrl: 'templates/search.html',
+          controller: 'SearchCtrl'
         }
       }
     })
@@ -70,6 +67,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     })
 
 
-   $urlRouterProvider.otherwise('/sign-in');
+   $urlRouterProvider.otherwise('/tab/search');
 
 });

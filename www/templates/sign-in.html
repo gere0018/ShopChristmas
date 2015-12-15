@@ -1,6 +1,6 @@
-<ion-view view-title="Sign-In">
+<ion-view view-title="Sign In to ShopChristmas">
         <ion-content>
-          <div class="list">
+          <div class="list padding">
             <label class="item item-input">
               <span class="input-label">Username</span>
               <input type="text" ng-model="user.username">
@@ -10,13 +10,18 @@
               <input type="password" ng-model="user.password">
             </label>
           </div>
-          <div class="padding">
-            <button class="button button-block button-positive" ng-click="signIn(user)">
-              Sign-In
-            </button>
-            <p class="text-center">
-              <a href="#/forgot-password">Forgot password</a>
-            </p>
-          </div>
+          
+          
+            <div class="padding-horizontal" >
+              <button class="button  button-full button-positive" ng-click="signIn(user.username, user.password)">
+                Sign In
+              </button>
+            </div>
+
+            <div class="padding-vertical padding-horizontal">
+              <button class="button button-full button-positive" ng-click="facebookSignin()"
+                      type="submit">Sign in with Facebook</button>
+            </div>
+         
         </ion-content>
       </ion-view>
