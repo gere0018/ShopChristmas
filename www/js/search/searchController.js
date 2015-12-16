@@ -12,10 +12,13 @@ angular.module('ShopChristmas')
       console.log("inside getData function");
       SearchData.getSearchData($scope.nehmat.userInput);
       //needed to add a timeout as it takes some time to get back the search results
-      $timeout(function(){
-        console.log(SearchData.getResults().data.products);
-        $scope.searches = SearchData.getResults().data.products        
+      $timeout(function(){        
+        if(SearchData.getResults()){
+           $scope.searches = SearchData.getResults().data.products;  
+           console.log(SearchData.getResults().data.products);      
         $ionicSlideBoxDelegate.update();
+        }
+       
       }, 1000);
 
     }
