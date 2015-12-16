@@ -1,11 +1,22 @@
-// Ionic Starter App
-
-// angular.module is a global place for creating, registering and retrieving Angular modules
-// 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
-// the 2nd parameter is an array of 'requires'
-// 'starter.services' is found in services.js
-// 'starter.controllers' is found in controllers.js
-angular.module('ShopChristmas', ['ionic','ngCordova'])
+angular.module('ShopChristmas', ['ionic','ngCordova','LocalStorageModule'])
+//This code is for the logs decoration from erro logging module
+  .decorator( '$log', [ "$delegate",
+   function( $delegate ){
+       // Save the original $log.debug()
+       var debugFn = $delegate.debug;
+       
+       $delegate.debug = function( ){
+         var args = [].slice.call(arguments),
+            now = new Date().toString();
+         // Prepend timestamp
+         args[0] =  [ now,'  ' ,args[0] ].join('');
+         
+         // Call the original with the output prepended with formatted timestamp
+         debugFn.apply(null, args)
+       };       
+       return $delegate;
+      }
+  ])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -24,11 +35,6 @@ angular.module('ShopChristmas', ['ionic','ngCordova'])
 })
 
 .config(function($stateProvider, $urlRouterProvider) {
-
-  // Ionic uses AngularUI Router which uses the concept of states
-  // Learn more here: https://github.com/angular-ui/ui-router
-  // Set up the various states which the app can be in.
-  // Each state's controller can be found in controllers.js
    $stateProvider
     .state('signin', {
       url: '/sign-in',
