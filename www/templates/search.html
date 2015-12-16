@@ -14,7 +14,7 @@
 		    </button>
 	    </div>
 
-	    <ion-content padding="true">
+	    <ion-content padding="true" class = "has-subheader">
 	    <ion-slide-box on-slide-changed="slideHasChanged($index)">
 		  <ion-slide ng-repeat="item in searches">
 		   <div class="list card">
@@ -25,7 +25,7 @@
 			  </div>
 
 			  <div class="item item-image">
-			    <img ng-src="{{ item.image }}">
+			    <img class= "coverImage" ng-src="{{ item.image }}">
 			  </div>
 
 			  <a class="item item-icon-left assertive" href="#">

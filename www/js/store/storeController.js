@@ -3,11 +3,13 @@ angular.module('ShopChristmas')
     function($scope, StoresData, $timeout, $ionicLoading){
     console.log("inside StoreCtrl");
     StoresData.getStoresForCurrentLocation();
-    $scope.show = function() {
-    $ionicLoading.show({
-      template: 'Loading...'
-    });
-    };
+    //show loading icon while we get the data
+      $scope.show = function() {
+        $ionicLoading.show({
+          template: '<ion-spinner></ion-spinner>'
+        });
+      };
+    
     //needed to add a timeout as it takes some time to get back the search results
     $timeout(function(){
       console.log(StoresData.getNearbyStores().data.stores);

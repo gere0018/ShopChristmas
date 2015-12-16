@@ -14,9 +14,8 @@
 	      <i class="icon ion-search"></i>
 	    </button>
 	</div>
-<ion-content padding="true" class = "has-subheader">
+<ion-content padding="true" class = "has-subheader" >
   <ion-list>
-  		<ion-spinner ng-show="show()" ng-hide="hide()"></ion-spinner>
 	    <ion-item class=" item-text-wrap" ng-repeat="store in stores">      
 	        <h3 class="list-header">{{ store.name }}</h3>
 	        <p>{{ store.address }}, {{store.city}}, {{store.region}}, {{store.country}}, {{store.postalCode}}</p>

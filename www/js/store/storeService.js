@@ -3,8 +3,9 @@ angular.module('ShopChristmas')
 	var nearbyStoresData;
 	var cityStores;
   return{
-  	//function used to get the nearby stores based on user's current location
+  	
     getStoresForCurrentLocation: function(){
+	   // get the nearby stores based on user's current location
       var posOptions = {timeout: 10000, enableHighAccuracy: false};
 	  $cordovaGeolocation
 	    .getCurrentPosition(posOptions)
@@ -13,6 +14,7 @@ angular.module('ShopChristmas')
 	      var long = position.coords.longitude;
 	      $http.get("http://api.bestbuy.com/v1/stores(area("
 	      	+ lat +","+ long + 
+	      	//since this api shows only stores in US, i increased the milage to get some results
 	      	",1000000000))?format=json&apiKey=5w2n4mecqg8awc9sbba26gps")
 	      .then(function(data){
 	      		console.log(data);  
