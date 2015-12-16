@@ -1,16 +1,20 @@
-angular.module('ShopChristmas', ['ionic','ngCordova','LocalStorageModule'])
-//This code is for the logs decoration from erro logging module
-  .decorator( '$log', [ "$delegate",
-   function( $delegate ){
+angular.module('ShopChristmas', ['ionic','ngCordova'])
+//This code is for the logs decoration from error logging module
+//it adds time stamp to the error, we can also add the localstorage functionality here.
+  .decorator( '$log', [ '$delegate', 'LocalStorageService',
+   function( $delegate, LocalStorageService ){
        // Save the original $log.debug()
-       var debugFn = $delegate.debug;
-       
+       var debugFn = $delegate.debug; 
        $delegate.debug = function( ){
          var args = [].slice.call(arguments),
             now = new Date().toString();
+        
          // Prepend timestamp
-         args[0] =  [ now,'  ' ,args[0] ].join('');
-         
+         args[0] =  [ now, ' -- Error Message: ' , args[0] ].join('');
+
+         // Save decorated Log to local storage using the service we created
+         LocalStorageService.setLogsInLocalStorage('gere0018-ShopChristmas-logs', args[0]);
+
          // Call the original with the output prepended with formatted timestamp
          debugFn.apply(null, args)
        };       
@@ -68,7 +72,8 @@ angular.module('ShopChristmas', ['ionic','ngCordova','LocalStorageModule'])
       url: '/logs',
       views: {
         'logs-tab': {
-          templateUrl: 'templates/logs.html'
+          templateUrl: 'templates/logs.html',
+          controller: 'LogCtrl'
         }
       }
     })

@@ -19,7 +19,7 @@ angular.module('ShopChristmas')
                 $ionicLoading.hide();
                 $ionicPopup.alert({
                       title: "No items found!!!",
-                      content: "There are currently no items that match you search!! Please try again."
+                      content: "There are currently no items that match your search!! Please try again."
                     });
               }else{
                 searchResults = searchData;               
