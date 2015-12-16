@@ -1,6 +1,29 @@
 <ion-view view-title="My Store">
-        <ion-content padding="true">
-          <p>This page will use geolocation if user approves to get the closest store to the user and display store contact number and info in a listView</p>
-         
-        </ion-content>
-      </ion-view>
+	<div class='bar bar-subheader item-input-inset bar-light'>
+	<!-- clear button didn't work within the search input. this is an open issue within ionic
+	So i had to put it outside the input --> 
+		<button class="button button-clear" ng-click="clearCityInput()">
+            	<i class="icon ion-ios-close" ></i>
+            </button>
+	    <label class="item-input-wrapper">
+	        <i class="icon ion-search placeholder-icon"></i>
+	        <input type="search" placeholder="Search" ng-model="store.city">         
+		</label>
+			
+	    <button class="button button-positive" ng-click="getStoresData()">
+	      <i class="icon ion-search"></i>
+	    </button>
+	</div>
+<ion-content padding="true" class = "has-subheader">
+  <ion-list>
+  		<ion-spinner ng-show="show()" ng-hide="hide()"></ion-spinner>
+	    <ion-item class=" item-text-wrap" ng-repeat="store in stores">      
+	        <h3 class="list-header">{{ store.name }}</h3>
+	        <p>{{ store.address }}, {{store.city}}, {{store.region}}, {{store.country}}, {{store.postalCode}}</p>
+	        <p>Hours of Operation: {{ store.hours }}</p>
+	        <p>Phone:{{ store.phone }}</p>
+
+	    </ion-item>
+	</ion-list>
+</ion-content>
+</ion-view>

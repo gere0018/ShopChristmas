@@ -1,13 +1,13 @@
  <ion-view view-title="Search">
         <div class='bar bar-subheader item-input-inset bar-light'>
+        <!-- clear button didn't work within the search input. this is an open issue within ionic. So i had to put it outside the input --> 
+		<button class="button button-clear" ng-click="clearInput()">
+            	<i class="icon ion-ios-close" ></i>
+            </button>
 	        <label class="item-input-wrapper">
 	            <i class="icon ion-search placeholder-icon"></i>
 			    <!--we add ng-model directive to search input to allow for two way data binding that makes the data and view connected -->
-	            <input type="search" placeholder="Search" ng-model="nehmat.userInput">
-	            <!-- clear button within the search input -->
-	           <a ng-click="clearInput()">
-			       <i class="icon ion-ios-close placeholder-icon"></i>
-			    </a>
+	            <input type="search" placeholder="Search" ng-model="nehmat.userInput">   
 	        </label>
 	        <button class="button button-positive" ng-click="getData()">
 		      <i class="icon ion-search"></i>

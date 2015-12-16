@@ -53,7 +53,8 @@ angular.module('ShopChristmas', ['ionic','ngCordova'])
       url: '/myStore',
       views: {
         'myStore-tab': {
-          templateUrl: 'templates/my-store.html'
+          templateUrl: 'templates/my-store.html',
+          controller:'StoreCtrl'
         }
       }
     })
