@@ -4,5 +4,6 @@ angular.module('ShopChristmas')
 		console.log("inside LogCtrl");
 		$scope.logs = 
 		LocalStorageService.getLogsFromLocalStorage('gere0018-ShopChristmas-logs');
+		console.log($scope.logs);
 
 }]);

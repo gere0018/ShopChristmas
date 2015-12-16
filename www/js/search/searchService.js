@@ -1,5 +1,6 @@
 angular.module('ShopChristmas')
-.factory('SearchData', ['$http', '$ionicLoading', '$ionicPopup', function($http,$ionicLoading, $ionicPopup) {
+.factory('SearchData', ['$http', '$ionicLoading', '$ionicPopup',
+ function($http,$ionicLoading, $ionicPopup) {
   var searchResults;
   return{
     getSearchData: function(userInput){

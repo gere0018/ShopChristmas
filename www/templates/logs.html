@@ -1,7 +1,7 @@
 <ion-view view-title="Logs">
         <ion-content padding="true">
           <ion-list>
-	    	<ion-item class=" item-text-wrap" ng-repeat="log in logs">      
+	    	<ion-item class=" item-text-wrap" ng-repeat="log in logs track by $index">    
 		        <p>{{ log }}</p>
 	    	</ion-item>
 	</ion-list>

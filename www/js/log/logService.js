@@ -4,11 +4,12 @@ angular.module('ShopChristmas')
 .factory('LocalStorageService',[function(){
 	return{
 		getLogsFromLocalStorage: function(key){
-			JSON.parse(localStorage.getItem(key));
-
+			return JSON.parse(localStorage.getItem(key)) || [];
 		},
 		setLogsInLocalStorage: function(key, value){
-			localStorage.setItem(key, JSON.stringify(value));
+			var currentLogs = JSON.parse(localStorage.getItem(key)) || [];
+			currentLogs.push(value);
+			localStorage.setItem(key, JSON.stringify(currentLogs));
 		}
 	}
 
