@@ -5,9 +5,11 @@ angular.module('ShopChristmas')
     StoresData.getStoresForCurrentLocation(); 
     //needed to add a timeout as it takes some time to get back the search results
     $timeout(function(){
-      console.log(StoresData.getNearbyStores().data.stores);
-      $scope.stores = StoresData.getNearbyStores().data.stores;
-    }, 5000);
+      if(StoresData.getNearbyStores()){
+        console.log(StoresData.getNearbyStores().data.stores);
+        $scope.stores = StoresData.getNearbyStores().data.stores;
+      }
+    }, 6000);
 
     $scope.store = {
         city : ""

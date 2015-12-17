@@ -5,6 +5,10 @@ angular.module('ShopChristmas')
   $scope.signIn = function(username, password) {
         if(ValidateSignIn.validateUser(username) == true 
           && ValidateSignIn.validatePassword(password) == true){
+          $ionicPopup.alert({
+                title: 'Welcome ' +  username ,
+                content: 'You have successfully logged in!'                
+                });
           //navigate inside the app to the first tab search
           $state.go('tabs.search');
           //empty the input fields

@@ -79,6 +79,6 @@ angular.module('ShopChristmas', ['ionic','ngCordova'])
     })
 
 
-   $urlRouterProvider.otherwise('/tab/search');
+   $urlRouterProvider.otherwise('/sign-in');
 
 });

@@ -29,8 +29,7 @@ angular.module('ShopChristmas')
 	            $ionicPopup.alert({
 	                  title: "No Stores found!!!",
 	                  content: "There are currently no stores near your location!!"
-	            });
-	            nearbyStoresData = storesData;     
+	            });    
 	        }else{
 	        	nearbyStoresData = storesData;     
 	        }
