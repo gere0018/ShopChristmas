@@ -17,8 +17,8 @@ module.exports = function(grunt) {
         stripBanners: true
       },
       dist: {
-        src: ['js/*.js' ],
-        dest: 'dist/<%= pkg.name %>.js'
+        src: ['www/dist/js/*.js' ],
+        dest: 'www/dist/js/<%= pkg.name %>.js'
       }
     },
     uglify: {
@@ -27,7 +27,7 @@ module.exports = function(grunt) {
       },
       dist: {
         src: '<%= concat.dist.src %>',
-        dest: 'www/dist/<%= pkg.name %>.min.js'
+        dest: 'www/dist/js/<%= pkg.name %>.min.js'
       }
     },
     jshint: {
@@ -42,7 +42,9 @@ module.exports = function(grunt) {
         undef: true,
         unused: true,
         boss: true,
+        //ignore the minified files that i am unable to correct their errors
         eqnull: true,
+        ignores:["www/dist/js/*.min.js"],
         //these objects are safe to igonnore during the linting process
         globals: {
           "angular" : false,
@@ -56,7 +58,7 @@ module.exports = function(grunt) {
         src: 'Gruntfile.js'
       },
       src_js: {
-        src: ['js/*.js']
+        src: ['www/dist/js/*.js']
       },
     },
     //this will watch your files and then copy only teh valid linted version to your dist folder.
@@ -79,21 +81,29 @@ module.exports = function(grunt) {
     //this will copy out only the min files to the www folder
     copy: {
       js: {
+        expand: true, 
+        flatten: true,
         src: 'www/lib/**/*.min.js',
-        dest: 'www/dist/js',
+        dest: 'www/dist/js/',
       },
       myjs:{
+        expand: true, 
+        flatten: true,
          src: 'www/js/**/*.js',
-        dest: 'www/dist/js',
+        dest: 'www/dist/js/',
 
       },
       css: {
+        expand: true, 
+       flatten: true,
         src: 'www/lib/**/css/*',
-        dest: 'www/dist/css',
+        dest: 'www/dist/css/',
       },
       fonts: {
+        expand: true, 
+        flatten: true,
         src: 'www/lib/**/fonts/*',
-        dest: 'www/dist/fonts',
+        dest: 'www/dist/fonts/',
       }
     },
     cordovacli: {
@@ -102,7 +112,7 @@ module.exports = function(grunt) {
       },
       cordova: {
         options: {
-          command: ['build'],
+          command: ['platform','build'],
           platforms: ['android', 'ios'],
           path: 'plugins'
         }
